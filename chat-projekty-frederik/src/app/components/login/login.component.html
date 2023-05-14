@@ -1,0 +1,22 @@
+<div class="background">
+  <h3>Login</h3>
+  <form (submit)="login(firstName.value, lastName.value)">
+    <label>First Name</label>
+    <input
+      name="firstName"
+      #firstName
+      type="text"
+      placeholder="Your first name..."
+    />
+    <br />
+    <label>Last Name</label>
+    <input
+      name="lastName"
+      #lastName
+      type="text"
+      placeholder="Your last name..."
+    />
+    <br />
+    <input type="submit" value="Login" />
+  </form>
+</div>

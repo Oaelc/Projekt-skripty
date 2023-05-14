@@ -1,0 +1,64 @@
+.background {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.top {
+    width: 95%;
+    height: 15%;
+    border: 5px solid greenyellow;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.bottom {
+    width: 95%;
+    height: 80%;
+    display: flex;
+}
+
+.left {
+    width: 25%;
+    height: 100%;
+    border: 5px solid greenyellow;
+    overflow-y: auto;
+}
+
+.middle {
+    width: calc(50% - 30px);
+    height: calc(100% - 30px);
+    border: 5px solid greenyellow;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.right {
+    width: calc(25% - 30px);
+    height: calc(100% - 30px);
+    border: 5px solid greenyellow;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.user {
+    margin: 10px 10px;
+}
+
+.user-details {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.messagee {
+    margin: 10px 0px;
+    display: flex;
+}

@@ -1,0 +1,135 @@
+<div (click)="handleClick()" class="background">
+  <div class="top">
+    <span>
+      {{ firstName }}
+      {{ lastName }}
+    </span>
+    {{ loggedTime }}
+    Clicks: {{ clickCount }} Characters: {{ charCount }} Chats opened:
+    {{ chatsCount }}
+    <button (click)="handleLogout()">Logout</button>
+  </div>
+  <div class="bottom">
+    <div class="left">
+      <div
+        *ngFor="let user of users"
+        (click)="handleUserClick(user.id)"
+        class="user"
+      >
+        {{ user.firstName }}
+        {{ user.lastName }}
+        <span>{{ user.email }}</span>
+        <div *ngIf="userClicked == true && detailId == user.id">
+          <div (click)="showUserDetails(user.id)">Show details</div>
+          <div
+            (click)="
+              chatMessages = [];
+              showChat = true;
+              chatTitle = user.username;
+              handleChatsOpened()
+            "
+          >
+            Start chat
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="middle">
+      <div *ngIf="detailShow == false">
+        <h3>Messages</h3>
+      </div>
+      <div *ngIf="detailShow == false">
+        <div *ngFor="let message of allChats" class="messagee">
+          <div>
+            <div>Me:</div>
+            <div>
+              {{ message.text }}
+            </div>
+            <div>
+              {{ message.sendTime }}
+            </div>
+          </div>
+          <div>
+            <div>{{ message.receiver }}:</div>
+            <div>
+              {{ message.response }}
+            </div>
+            <div>
+              {{ message.responseTime }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="detailShow == true" class="user-details">
+        <h6
+          (click)="closeUserDetails()"
+          style="font-size: 30px; margin-bottom: 0px; margin-top: 10px"
+        >
+          X
+        </h6>
+        <div>
+          <img src="{{ userDetails.image }}" alt="avatar" />
+          <br />First Name: {{ userDetails.firstName }}<br />Last Name:
+          {{ userDetails.lastName }}<br />Username: {{ userDetails.username
+          }}<br />Birthdate: {{ userDetails.birthDate }}<br />
+          Eye Color: {{ userDetails.eyeColor }}<br />
+          University: {{ userDetails.university }}<br />MAC Address:
+          {{ userDetails.macAddress }}<br />IP Address: {{ userDetails.ip
+          }}<br />City: {{ userDetails.company.address.city }}<br />
+        </div>
+        <div *ngIf="showMoreData == true">
+          <div>
+            Country: {{ zipData.country }}<br />Gender:
+            {{ genderData.gender }}
+          </div>
+        </div>
+        <button (click)="toggleMoreData()" *ngIf="showMoreData == false">
+          Show More
+        </button>
+        <button (click)="hideData()" *ngIf="showMoreData == true">Hide</button>
+      </div>
+    </div>
+    <div class="right">
+      <div *ngIf="showChat == true">
+        <div>
+          <h3>{{ chatTitle }}</h3>
+          <h6 (click)="closeChat()">Close</h6>
+        </div>
+        <div>
+          <div *ngFor="let message of chatMessages" class="messagee">
+            <div>
+              <div>
+                {{ message.text }}
+              </div>
+              <div>
+                {{ message.sendTime }}
+              </div>
+            </div>
+            <div>
+              <div>
+                {{ message.response }}
+              </div>
+              <div>
+                {{ message.responseTime }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form (ngSubmit)="handleSubmit($event)">
+            <input
+              placeholder="Message..."
+              name="text"
+              [(ngModel)]="text"
+              (keyup)="handleKeyUp($event)"
+              (input)="onCharInput($event)"
+            />
+            <button type="submit">
+              >
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
